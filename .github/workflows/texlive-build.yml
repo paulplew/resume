@@ -1,0 +1,49 @@
+name: Build Resume LaTeX Doc
+
+on: 
+  push:
+    tags:
+    - 'v*.*.*'
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+
+    steps:
+    # Checkout the repository
+    - name: Checkout repository
+      uses: actions/checkout@v3
+
+    # Cache APT packages
+    - name: Cache APT packages
+      uses: actions/cache@v4
+      with:
+        path: |
+          /var/cache/apt
+          /var/lib/apt
+        key: ${{ runner.os }}-apt-cache
+        restore-keys: |
+          ${{ runner.os }}-apt-cache
+
+    # Update APT and install TeX Live
+    - name: Install up TeX Live
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y texlive-full
+
+    # Compile LaTeX document
+    - name: Compile LaTeX document
+      run: |
+        mkdir -p output
+        pdflatex -interaction=nonstopmode -output-directory=output resume.tex
+
+    # Upload PDF artifact
+    - name: Upload PDF
+      uses: actions/upload-artifact@v4
+      with:
+        name: compiled-resume-pdf
+        path: output/resume.pdf
+
+    - uses: ncipollo/release-action@v1
+      with:
+        artifacts: "output/resume.pdf"
