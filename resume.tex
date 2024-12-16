@@ -1,0 +1,70 @@
+\documentclass{resume}
+
+\rohead{\thepage\ of \pageref{LastPage}}
+
+\cofoot{
+    \begin{spacing}{1}
+    \so{Boston, MA}\\
+    
+    \hspace{0.25cm}
+    \small{\footeremail{thepaulplew@gmail.com}}
+    \hspace{0.25cm}
+    \small{\footerphone{+1 (310) 948-3839}}
+    \hspace{0.25cm}
+    \small{\footerlink{https://plew.dev}{plew.dev}}
+
+    \vspace{0.15cm}
+    \tiny{\emph{\LaTeX source compiled on \today \, at \currenttime}}
+    \end{spacing}
+}
+
+\begin{document}
+
+\name{Paul Plew}
+\smallskip
+
+\section{Experience}
+
+\employer
+    {Alloy Enterprises}
+    {https://alloyenterprises.co}
+    {January 2023 --- November 2024}
+    {Full Stack Software Engineer}
+    {\begin{jobitems}
+        \item Designed and implemented robust back-end systems to enhance functionality and improve performance of custom internal tool-path generation software written in python and c++.
+        \item Developed and deployed a material quality inspection system, integrating it with the company's internal manufacturing execution system, resulting in increased manufacturing throughput and improved traceability.
+        \item Built responsive, user-friendly front-end interfaces with TypeScript and React to optimize machine uptime, enhance throughput, and reduce resolution time for machine operators.
+        \item Managed version control systems to promote effective collaboration, maintain code integrity, and streamline development workflows.
+    \end{jobitems}}
+
+\employer
+    {Autodesk, Inc.}
+    {https://www.autodesk.com}
+    {January 2022 --- December 2022}
+    {Quality Assurance Engineering Intern}
+    {\begin{jobitems}
+        \item Created and maintained end-to-end tests for Revit architecture software to ensure reliability and performance.
+        \item Collaborated with teammates on an Agile team and used git + GitHub to track progress and maintain version control.
+        \item Performed root cause analysis on software bugs, proposed potential solutions, and effectively communicated findings to non-technical employees.
+    \end{jobitems}}
+
+\employer
+    {Northeastern University CAMD}
+    {https://camd.northeastern.edu}
+    {September 2021--- December 2021}
+    {Graduate Teaching Assistant}
+    {\begin{jobitems}
+        \item Instructed and assisted students one-on-one during course meetings and office hours to resolve technical challenges.
+        \item Taught students from non-technical backgrounds to gain hands-on experience with JavaScript, Typescript, D3.js, and processing large data sets.
+    \end{jobitems}}
+
+\section{Education}
+
+\stdtable{
+School              & Northeastern University \hfill Class of 2023\\
+Degree              & B.S., Computer Science \& Design\\
+GPA      &3.51/4.00; \emph{cum laude}\\
+Coursework & Algorithms, Object Oriented Design, Web Development, Artificial Intelligence, Programming Languages
+}
+
+\end{document}
