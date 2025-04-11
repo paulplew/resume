@@ -7,12 +7,14 @@
 \ProvidesClass{resume}
 
 \LoadClass[letterpaper, oneside, final, 11pt]{scrartcl}
-\usepackage[letterpaper,left=0.85in,top=0.90in,right=0.85in,bottom=1.5in]{geometry}
+\usepackage[letterpaper,left=0.85in,top=0.75in,right=0.85in,bottom=1.35in]{geometry}
 \usepackage{setspace}
 \usepackage{xifthen}
 \usepackage{enumitem}
 \usepackage{stackengine}
 \usepackage{datetime}
+\usepackage{array}
+\usepackage{ragged2e}
 
 \settimeformat{oclock}
 \shortdate
@@ -36,7 +38,7 @@
 	\title{#1's Resum$\acute{e}$}
 	\author{#1}
 	\begin{center}
-    	\textsc{ \Huge{ \so{#1} } }
+    	\textsc{ \LARGE{ \so{#1} } }
     \end{center}
 }
 
@@ -68,9 +70,11 @@
 %%
 %%
 %%
-\newcommand{\stdtable}[1]{\begin{tabularx}{1.00\linewidth}{>{\raggedleft\scshape}p{3cm}X}
-#1
-\end{tabularx}}
+\newcommand{\stdtable}[1]{
+    \begin{tabularx}{1.00\linewidth}{>{\raggedleft\scshape}m{3cm}X}
+    #1
+    \end{tabularx}
+}
 
 %%
 %% \employer{NAME}{WEBSITE}{DATE}{TITLE}{DESCRIPTION}
@@ -89,16 +93,23 @@
 %%
 %% \project{NAME}{WEBSITE}{ROLE}{DETAILS}
 %%
-\newcommand{\project}[4]{\begin{tabularx}{1.00\linewidth}{>{\raggedleft\scshape}p{2cm}X}
+\newcommand{\project}[4]{\addstackgap[0.5em]{\begin{tabularx}{1.00\linewidth}{>{\raggedleft\scshape}p{2cm}X}
     Project    & #1 \hfill \href{#2}{#2}\\
     Role       & #3\\
     Details    & #4\\
-\end{tabularx}}
+\end{tabularx}}}
 
 %%
 %% LIST STYLES
 %%
-
 \newlist{jobitems}{itemize}{3}
 \setlist[jobitems]{label=\textbullet,nosep,topsep=0em,labelindent=\parindent,leftmargin=*}
 \setlist[jobitems,2]{label=-}
+
+\newcommand{\itemlist}[1]{%
+  \begin{tabular}{@{}*{\the\numexpr\count0+1\relax}{\raggedright}@{}}  
+    #1
+  \end{tabular}%
+}
+
+\newcommand{\centereddot}[0]{\textperiodcentered\,}
